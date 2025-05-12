@@ -75,15 +75,19 @@ class Video(Resource):
     def patch(self, video_id):
         """
         Actualiza un video existente
-        
-        Args:
-            video_id (int): ID del video a actualizar
-            
-        Returns:
-            VideoModel: El video actualizado
         """
-        # TODO
-        pass
+        args = video_update_args.parse_args()
+        video = abort_if_video_doesnt_exist(video_id)
+        
+        if args['name']:
+            video.name = args['name']
+        if args['views']:
+            video.views = args['views']
+        if args['likes']:
+            video.likes = args['likes']
+        
+        db.session.commit()
+        return video, 200
     
     def delete(self, video_id):
         """
