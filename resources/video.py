@@ -60,15 +60,16 @@ class Video(Resource):
     def put(self, video_id):
         """
         Crea un nuevo video con un ID específico
-        
-        Args:
-            video_id (int): ID para el nuevo video
-            
-        Returns:
-            VideoModel: El video creado
         """
-        # TODO
-        pass
+        args = video_put_args.parse_args()
+        video = VideoModel.query.filter_by(id=video_id).first()
+        if video:
+            abort(409, message=f"El video con ID {video_id} ya existe")
+        
+        new_video = VideoModel(id=video_id, name=args['name'], views=args['views'], likes=args['likes'])
+        db.session.add(new_video)
+        db.session.commit()
+        return new_video, 201
     
     @marshal_with(resource_fields)
     def patch(self, video_id):
