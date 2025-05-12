@@ -92,13 +92,9 @@ class Video(Resource):
     def delete(self, video_id):
         """
         Elimina un video existente
-        
-        Args:
-            video_id (int): ID del video a eliminar
-            
-        Returns:
-            str: Mensaje vacío con código 204
         """
-        # TODO
-        pass
+        video = abort_if_video_doesnt_exist(video_id)
+        db.session.delete(video)
+        db.session.commit()
+        return '', 204
 
