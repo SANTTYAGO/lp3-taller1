@@ -52,15 +52,9 @@ class Video(Resource):
     def get(self, video_id):
         """
         Obtiene un video por su ID
-        
-        Args:
-            video_id (int): ID del video a obtener
-            
-        Returns:
-            VideoModel: El video solicitado
         """
-        # TODO
-        pass
+        video = abort_if_video_doesnt_exist(video_id)
+        return video, 200
     
     @marshal_with(resource_fields)
     def put(self, video_id):
