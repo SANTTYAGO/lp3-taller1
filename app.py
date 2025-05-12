@@ -9,17 +9,8 @@ from resources.video import Video
 from config import config
 
 def create_app(config_name='default'):
-    """
-    Función factory para crear la aplicación Flask
-    
-    Args:
-        config_name (str): Nombre de la configuración a utilizar
-        
-    Returns:
-        Flask: Aplicación Flask configurada
-    """
-    # TODO: Crear el objeto 'app'
 
+    app = Flask(__name__)
     
     # Cargar configuración
     app.config.from_object(config[config_name])
