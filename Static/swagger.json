@@ -1,0 +1,150 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API de Videos",
+      "description": "Documentación de la API para gestionar videos"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/api/videos/{video_id}": {
+        "get": {
+          "summary": "Obtener un video",
+          "description": "Obtiene un video por su ID",
+          "parameters": [
+            {
+              "name": "video_id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del video"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Video encontrado",
+              "examples": {
+                "application/json": {
+                  "id": 1,
+                  "name": "Tutorial de Python",
+                  "views": 1500,
+                  "likes": 120
+                }
+              }
+            },
+            "404": {
+              "description": "Video no encontrado"
+            }
+          }
+        },
+        "put": {
+          "summary": "Crear un nuevo video",
+          "description": "Crea un nuevo video con un ID específico",
+          "parameters": [
+            {
+              "name": "video_id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del video"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "views": { "type": "integer" },
+                  "likes": { "type": "integer" }
+                },
+                "required": ["name", "views", "likes"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Video creado",
+              "examples": {
+                "application/json": {
+                  "id": 1,
+                  "name": "Tutorial de Flask",
+                  "views": 0,
+                  "likes": 0
+                }
+              }
+            },
+            "409": {
+              "description": "Conflicto: El video ya existe"
+            }
+          }
+        },
+        "patch": {
+          "summary": "Actualizar un video",
+          "description": "Actualiza un video existente",
+          "parameters": [
+            {
+              "name": "video_id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del video"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "views": { "type": "integer" },
+                  "likes": { "type": "integer" }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Video actualizado",
+              "examples": {
+                "application/json": {
+                  "id": 1,
+                  "name": "Tutorial de Flask",
+                  "views": 2500,
+                  "likes": 200
+                }
+              }
+            },
+            "404": {
+              "description": "Video no encontrado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Eliminar un video",
+          "description": "Elimina un video existente",
+          "parameters": [
+            {
+              "name": "video_id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del video"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Video eliminado"
+            },
+            "404": {
+              "description": "Video no encontrado"
+            }
+          }
+        }
+      }
+    }
+  }

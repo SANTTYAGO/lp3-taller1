@@ -7,6 +7,8 @@ from flask_restful import Api
 from models import db
 from resources.video import Video
 from config import config
+from flask_swagger_ui import get_swaggerui_blueprint
+from flask import jsonify
 
 def create_app(config_name='default'):
 
@@ -21,6 +23,12 @@ def create_app(config_name='default'):
     
     # Registrar rutas
     api.add_resource(Video, "/api/videos/<int:video_id>")
+
+    # Swagger UI
+    SWAGGER_URL = '/swagger'
+    API_URL = '/static/swagger.json'
+    swaggerui_blueprint = get_swaggerui_blueprint(SWAGGER_URL, API_URL)
+    app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
     
     return app
 
