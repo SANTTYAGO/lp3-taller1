@@ -1,3 +1,5 @@
+# CREADO POR: SANTIAGO VALENCIA AGUDELO
+
 # API de Videos
 
 Esta es una API RESTful para gestión de videos, desarrollada con Flask, Flask-RESTful y SQLAlchemy.
@@ -38,29 +40,6 @@ lp3-taller1
 
 - Python 3.8 o superior
 - pip (gestor de paquetes de Python)
-
-## Instalación
-
-1. Clonar el repositorio:
-   ```
-   git clone https://github.com/UR-CC/lp3-taller1.git
-   cd lp3-taller1
-   ```
-
-2. Crear un entorno virtual:
-   ```
-   python -m venv venv
-   ```
-
-3. Activar el entorno virtual:
-     ```
-     source venv/bin/activate
-     ```
-
-4. Instalar las dependencias:
-   ```
-   pip install -r requirements.txt
-   ```
 
 ## Ejecución
 
@@ -278,54 +257,3 @@ Sin contenido.
    [http://localhost:5000/swagger](http://localhost:5000/swagger)
 
 Desde esta interfaz, puedes probar los endpoints directamente y visualizar las respuestas de la API.
-
-## Desarrollo del Taller
-
-1. Ajustar este `README.md` con los datos del Estudiante
-
-2. Realizar un `commit` por cada ajuste realizando, deben buscar los comentarios `# TODO:`
-
-3. Completar el archivo `app.py`
-
-4. Completar el archivo `resources/video.py`
-
-5. Elaborar un documento con las pruebas realizar para cada método del API REST.
-
-6. Implementar una (1) de las sugerencias que se presentan a continuación.
-
-### Sugerencias de Mejora
-
-1. **Autenticación y autorización**:
-   - Implementar JWT para autenticar usuarios
-   - Definir roles y permisos
-
-2. **Documentación**:
-   - Integrar Swagger/OpenAPI para documentar la API
-   - Añadir ejemplos de uso
-
-3. **Validación de datos**:
-   - Mejorar la validación de entrada con marshmallow o similar
-   - Manejar errores de forma más específica
-
-4. **Funcionalidades adicionales**:
-   - Añadir búsqueda y filtrado
-   - Implementar paginación
-   - Añadir endpoints para obtener todos los videos
-   - Implementar sistema de categorías/etiquetas
-
-5. **Migración de Base de datos**:
-   - Implementar Flask-Migrate para gestionar cambios en el esquema
-
-6. **Pruebas**:
-   - Añadir pruebas unitarias
-   - Implementar pruebas de integración
-   - Configurar CI/CD
-
-7. **Registro y monitoreo**:
-   - Implementar logging
-   - Añadir métricas y monitoreo
-
-8. **Despliegue**:
-   - Dockerizar la aplicación
-   - Configurar para entornos de producción
-
